@@ -9,6 +9,7 @@ This program is a GNU General Public License and is a free copyleft license for 
 #include <linux/device.h>
 #include <linux/uaccess.h>
 #include <linux/io.h>
+#include <linux/delay.h>
 
 MODULE_AUTHOR("Ryuichi Ueda & Takumi Kawamoto");
 MODULE_DESCRIPTION("driver for LED control");
@@ -20,19 +21,33 @@ static struct cdev cdv;
 static struct class *cls = NULL;
 static volatile u32 *gpio_base = NULL;
 
+static int gpio[4] = {21, 16, 25, 12};
+
 static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
 {
 	char c;
+	int i;
 	if(copy_from_user(&c, buf, sizeof(char)))
 		return -EFAULT;
 	
 //	printk(KERN_INFO "receive %c\n", c);
 	
-	if(c == '0')
-        	gpio_base[10] = 1 << 25;
-    	else if(c == '1')
-        	gpio_base[7] = 1 << 25;
+	if(c == '0'){
+		for(i=0; i<4; i++)
+        		gpio_base[10] = 1 << gpio[i];
+		printk(KERN_INFO "LED OFF\n");
+	}
 
+	else if(c == 's'){
+		for(i=0; i<3; i++){
+        		gpio_base[7] = 1 << gpio[i];
+			msleep(1200);
+		}
+		msleep(400);
+		for(i=0; i<3; i++)
+			gpio_base[10] = 1 << gpio[i];
+		gpio_base[7] = 1 << gpio[3];
+	}
 
 	return 1;
 }
@@ -57,7 +72,7 @@ static struct file_operations led_fops = {
 
 static int __init init_mod(void)
 {
-		int retval;
+		int retval, i;
 		retval = alloc_chrdev_region(&dev, 0, 1, "myled");
 		if(retval <0){
 			printk(KERN_ERR "alloc_chrdev_region failed. \n");
@@ -83,12 +98,13 @@ static int __init init_mod(void)
 		
 		gpio_base = ioremap_nocache(0xfe200000, 0xA0);
 		
-		const u32 led = 25;
-  		const u32 index = led/10;//GPFSEL2
- 		const u32 shift = (led%10)*3;//15bit
-		const u32 mask = ~(0x7 << shift);
-    		gpio_base[index] = (gpio_base[index] & mask) | (0x1 << shift);
-
+		for( i=0; i<4; i++ ){
+			const u32 led = gpio[i];
+  			const u32 index = led/10;//GPFSEL2
+ 			const u32 shift = (led%10)*3;//15bit
+			const u32 mask = ~(0x7 << shift);
+    			gpio_base[index] = (gpio_base[index] & mask) | (0x1 << shift);
+		}
 		return 0;
 }
 
