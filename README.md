@@ -19,10 +19,10 @@
 # 実行方法
 
     $ git clone https://github.com/yuyakobayashi7/robosys_device_driver.git
-$ cd robosys_device_driver
+    $ cd robosys_device_driver
     $ make
-$ sudo insmod myled.ko
-$ sudo chmod 666 /dev/myled0
+    $ sudo insmod myled.ko
+    $ sudo chmod 666 /dev/myled0
 
 # 操作方法
 
