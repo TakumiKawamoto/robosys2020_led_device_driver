@@ -18,12 +18,20 @@
 
 # 実行方法
 
-    $ git clone https://github.com/yuyakobayashi7/robosys_device_driver.git
-    $ cd robosys_device_driver
+    $ git clone https://github.com/TakumiKawamoto/robosys_led.git
+    $ cd robosys_led
     $ make
     $ sudo insmod myled.ko
     $ sudo chmod 666 /dev/myled0
 
 # 操作方法
+
+- レースシグナルカウントスタート
+
+        $ echo s > /dev/myled0
+
+- シグナル消灯
+
+        $ echo 0 > /dev/myled0
 
 # 実演動画
