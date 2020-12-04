@@ -19,7 +19,9 @@
 
 # 回路
 
-Raspberry Pi4 GPIOピン[21, 16, 25, 12]を使用
+Raspberry Pi4 GPIOピン[21, 16, 25, 12]を使用し、それぞれLEDに接続
+
+GPIO12は並列にLEDを3つ接続
 
 <img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/Circuit_image.jpg" width="364px"><img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/image.jpg" width="580px">
 
