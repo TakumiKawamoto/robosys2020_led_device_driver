@@ -49,4 +49,4 @@ GPIO12は並列にLEDを3つ接続
 
 # 実演動画
 
-https://youtu.be/X9BTRZVbdGE
+https://youtu.be/kS7PiFLpQug
