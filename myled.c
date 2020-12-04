@@ -48,26 +48,45 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 			gpio_base[10] = 1 << gpio[i];
 		gpio_base[7] = 1 << gpio[3];
 	}
+	
+	else if(c != '\n'){
+		for(n=0; n<2; n++){
+			for(i=0; i<4; i++){
+				gpio_base[7] = 1 << gpio[i];
+				msleep(70);
+				gpio_base[10] = 1 << gpio[i];
+			}
+		}
+		msleep(400);
+		for(n=0; n<2; n++){
+			for(i=0; i<4; i++)
+				gpio_base[7] = 1 << gpio[i];
+			msleep(400);
+			for(i=0; i<4; i++)
+				gpio_base[10] = 1 << gpio[i];
+			msleep(400);
+		}
+	}
 
 	return 1;
 }
 
 static ssize_t sushi_read(struct file* filp, char* buf, size_t count, loff_t* pos)
 {
-     int size = 0;
-     char sushi[] = {'s', 'u', 's', 'h', 'i', 0x0A}; //寿司の絵文字のバイナリ
-     if(copy_to_user(buf+size, (const char *)sushi, sizeof(sushi))){
-        printk(KERN_INFO "sushi: copy_to_user failed.\n");
-     	return -EFAULT;
-     }
-     size += sizeof(sushi);
-    return size;
+	int size = 0;
+	char sushi[] = {'s', 'u', 's', 'h', 'i', 0x0A}; //寿司の絵文字のバイナリ
+	if(copy_to_user(buf+size, (const char *)sushi, sizeof(sushi))){
+		printk(KERN_INFO "sushi: copy_to_user failed.\n");
+		return -EFAULT;
+	}
+	size += sizeof(sushi);
+	return size;
 }
 
 static struct file_operations led_fops = {
-     .owner = THIS_MODULE,
-     .write = led_write,
-     .read = sushi_read
+	.owner = THIS_MODULE,
+	.write = led_write,
+	.read = sushi_read
 };
 
 static int __init init_mod(void)
