@@ -21,7 +21,7 @@
 
 Raspberry Pi4 GPIOピン[21, 16, 25, 12]を使用
 
-<img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/Circuit_image.jpg" width="320px"><img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/IMG_20201203_172423.jpg" width="580px">
+<img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/Circuit_image.jpg" width="350px"><img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/IMG_20201203_172423.jpg" width="580px">
 
 # 実行方法
 
