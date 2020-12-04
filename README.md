@@ -12,7 +12,7 @@
 
 - Raspberry Pi4 Model B
 - LED(赤)x3, (緑)x3
-- 抵抗 330Ω x3, 20Ω x1, 47Ω x1, 51Ω x1
+- 抵抗 330Ω x3, 51Ω x3
 - ブレッドボード
 - 配線コード
 - ジャンプワイヤ
@@ -21,7 +21,7 @@
 
 Raspberry Pi4 GPIOピン[21, 16, 25, 12]を使用
 
-<img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/Circuit.jpg" width="500px">
+<img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/Circuit_image.jpg" width="500px">
 <img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/IMG_20201203_172423.jpg" width="500px">
 
 # 実行方法
