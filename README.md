@@ -48,3 +48,5 @@ GPIO12は並列にLEDを3つ接続
         $ echo t > /dev/myled0
 
 # 実演動画
+
+https://youtu.be/X9BTRZVbdGE
