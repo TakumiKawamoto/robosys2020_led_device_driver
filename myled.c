@@ -1,8 +1,3 @@
-/*
- *Copyright (c) 2020 Takumi Kawamoto.
-This program is a GNU General Public License and is a free copyleft license for software and other types of works.
- */
-
 #include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/cdev.h>
