@@ -44,7 +44,7 @@ GPIO12は並列にLEDを3つ接続
 
         $ echo 0 > /dev/myled0
 
-- エラー表示
+- エラー表示（s,0以外の文字、数字）
 
         $ echo t > /dev/myled0
 
@@ -56,4 +56,4 @@ https://youtu.be/kS7PiFLpQug
 
 #ライセンス
 
-GNU General Public License v3.0
+[GNU General Public License v3.0]
