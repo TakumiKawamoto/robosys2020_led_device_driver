@@ -52,6 +52,12 @@ GPIO12は並列にLEDを3つ接続
 
 [![](https://img.youtube.com/vi/kS7PiFLpQug/0.jpg)](https://www.youtube.com/watch?v=kS7PiFLpQug)
 
+# 参考
+
+https://github.com/ryuichiueda/robosys_device_drivers
+
+https://github.com/GakuKuwano/robosys2020_led
+
 # ライセンス
 
 [GNU General Public License v3.0](https://github.com/TakumiKawamoto/robosys_led/blob/main/COPYING)
