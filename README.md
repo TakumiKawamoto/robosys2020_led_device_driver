@@ -3,8 +3,9 @@
 
 # 内容
 
+ロボットシステム学の講義で作成したものを改変しました
 赤と緑のLEDを用いてレースのスタートシグナルを再現
-- デバイスファイルに"s"を書き込むとカウントダウンスタート (START)
+- デバイスファイルに's'を書き込むとカウントダウンスタート (START)
 - '0'を書き込むとシグナルが消灯 (TURN OFF)
 - 's ' 0'以外が書き込まれるとLEDでエラー表示 (ERROR)
 
@@ -12,16 +13,18 @@
 
 - Raspberry Pi4 Model B
 - LED(赤)x3, (緑)x3
-- 抵抗 330Ω x3, 20Ω x1, 47Ω x1, 51Ω x1
+- 抵抗 330Ω x3, 51Ω x3
 - ブレッドボード
 - 配線コード
 - ジャンプワイヤ
 
 # 回路
 
-Raspberry Pi4 GPIOピン[21, 16, 25, 12]を使用
+Raspberry Pi4 GPIOピン[21, 16, 25, 12]を使用し、それぞれLEDに接続
 
-<img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/IMG_20201203_172423.jpg" width="600px">
+GPIO12は並列にLEDを3つ接続
+
+<img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/Circuit_image.jpg" width="364px"><img src="https://github.com/TakumiKawamoto/robosys_led/blob/main/contents/image.jpg" width="580px">
 
 # 実行方法
 
@@ -33,7 +36,7 @@ Raspberry Pi4 GPIOピン[21, 16, 25, 12]を使用
 
 # 操作方法
 
-- レースシグナルカウントスタート
+- シグナルカウントスタート
 
         $ echo s > /dev/myled0
 
@@ -41,8 +44,20 @@ Raspberry Pi4 GPIOピン[21, 16, 25, 12]を使用
 
         $ echo 0 > /dev/myled0
 
-- エラー表示
+- エラー表示（s,0以外の文字、数字）
 
         $ echo t > /dev/myled0
 
 # 実演動画
+
+[![](https://img.youtube.com/vi/kS7PiFLpQug/0.jpg)](https://www.youtube.com/watch?v=kS7PiFLpQug)
+
+# 参考
+
+https://github.com/ryuichiueda/robosys_device_drivers
+
+https://github.com/GakuKuwano/robosys2020_led
+
+# ライセンス
+
+[GNU General Public License v3.0](https://github.com/TakumiKawamoto/robosys_led/blob/main/COPYING)
